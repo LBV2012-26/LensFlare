@@ -89,7 +89,7 @@ vec3 KelvinToRgb(float Kelvin) {
 
 void main() {
 	vec2 FragUv = (gl_FragCoord.xy - iStarPosNdc * iResolution.xy) / iResolution.y;
-	vec3 Color    = vec3(0.0);
+	vec3 Color  = vec3(0.0);
 
 	// FragUv *= 2.0;
 	// FragUv *= Rotate(kPi / sin(iTime));
