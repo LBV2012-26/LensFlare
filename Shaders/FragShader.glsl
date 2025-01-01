@@ -8,10 +8,11 @@ uniform vec2  iResolution;
 uniform float iTime;
 uniform vec2  iStarPosNdc;
 uniform vec3  iStarColor;
-uniform float iEffTemp;
+uniform float iTeff;
 uniform float iBrightness;
 uniform float iFlareWidth;
 uniform float iDistance;
+uniform float iSizeRate;
 
 const float kPi = 3.141592653;
 
@@ -19,15 +20,12 @@ mat2x2 Rotate(float Angle) {
 	float Sin = sin(Angle);
 	float Cos = cos(Angle);
 	
-	return mat2x2(
-		Cos, -Sin,
-		Sin,  Cos
-	);
+	return mat2x2(Cos, -Sin, Sin, Cos);
 }
 
 float LensFlare(vec2 FragUv, float Flare) {
 	float Color = 0;
-	float Size  = iDistance / iBrightness;
+	float Size  = iDistance / iBrightness * iSizeRate;
 	
 	// float DiffSpike = max(0.0, 1.0 - abs(FragUv.x * FragUv.y * Size * 2));
 	
@@ -56,16 +54,12 @@ vec3 KelvinToRgb(float Kelvin) {
 	float Blue  = 0;
 	
 	if (Temp <= 66.0) {
-		Red = 255.0;
-	} else {
-		Red = Temp - 60.0;
-		Red = 329.698727446 * pow(Red, -0.1332047592);
-	}
-	
-	if (Temp <= 66.0) {
+		Red   = 255.0;
 		Green = Temp;
 		Green = 99.4708025861 * log(Green) - 161.1195681661;
 	} else {
+		Red   = Temp - 60.0;
+		Red   = 329.698727446 * pow(Red, -0.1332047592);
 		Green = Temp - 66.0;
 		Green = 288.1221695283 * pow(Green, -0.0755148492);
 	}
@@ -92,12 +86,13 @@ void main() {
 	vec3 Color  = vec3(0.0);
 
 	// FragUv *= 2.0;
-	// FragUv *= Rotate(kPi / sin(iTime));
+	// FragUv *= Rotate(kPi / sin(iTime / 10));
 
 	Color = vec3(LensFlare(FragUv, 1.0));
 	
+	
 #ifdef STAR_COLOR_KELVIN
-	Color *= KelvinToRgb(iEffTemp);
+	Color *= KelvinToRgb(iTeff);
 #else
 	Color *= iStarColor;
 #endif // STAR_COLOR_KELVIN

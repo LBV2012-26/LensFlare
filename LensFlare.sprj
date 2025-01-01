@@ -30,11 +30,6 @@
 						<value>1</value>
 					</row>
 				</variable>
-				<variable type="float" name="iEffTemp">
-					<row>
-						<value>3200</value>
-					</row>
-				</variable>
 				<variable type="float2" name="iStarPosNdc">
 					<row>
 						<value>0.5</value>
@@ -48,12 +43,22 @@
 				</variable>
 				<variable type="float" name="iDistance">
 					<row>
-						<value>10000</value>
+						<value>20000</value>
 					</row>
 				</variable>
 				<variable type="float" name="iFlareWidth">
 					<row>
 						<value>0.00100000005</value>
+					</row>
+				</variable>
+				<variable type="float" name="iTeff">
+					<row>
+						<value>54000</value>
+					</row>
+				</variable>
+				<variable type="float" name="iSizeRate">
+					<row>
+						<value>1</value>
 					</row>
 				</variable>
 			</variables>
@@ -63,15 +68,17 @@
 	<objects />
 	<cameras />
 	<settings>
+		<entry type="file" name="LensFlare" shader="vs" />
 		<entry type="file" name="LensFlare" shader="ps" />
 		<entry type="pinned" name="iStarColor" owner="LensFlare" />
-		<entry type="pinned" name="iEffTemp" owner="LensFlare" />
 		<entry type="pinned" name="iStarPosNdc" owner="LensFlare" />
 		<entry type="pinned" name="iBrightness" owner="LensFlare" />
 		<entry type="pinned" name="iDistance" owner="LensFlare" />
 		<entry type="pinned" name="iFlareWidth" owner="LensFlare" />
+		<entry type="pinned" name="iTeff" owner="LensFlare" />
+		<entry type="pinned" name="iSizeRate" owner="LensFlare" />
 		<entry type="camera" fp="false">
-			<distance>44</distance>
+			<distance>4</distance>
 			<pitch>-76</pitch>
 			<yaw>228</yaw>
 			<roll>360</roll>
