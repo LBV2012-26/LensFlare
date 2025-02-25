@@ -48,7 +48,7 @@
 				</variable>
 				<variable type="float" name="iFlareWidth">
 					<row>
-						<value>0.00100000005</value>
+						<value>0.00100000000</value>
 					</row>
 				</variable>
 				<variable type="float" name="iTeff">
