@@ -68,6 +68,7 @@
 	<objects />
 	<cameras />
 	<settings>
+		<entry type="property" name="LensFlare" item="pipe" />
 		<entry type="file" name="LensFlare" shader="vs" />
 		<entry type="file" name="LensFlare" shader="ps" />
 		<entry type="pinned" name="iStarColor" owner="LensFlare" />
@@ -79,8 +80,8 @@
 		<entry type="pinned" name="iSizeRate" owner="LensFlare" />
 		<entry type="camera" fp="false">
 			<distance>4</distance>
-			<pitch>-76</pitch>
-			<yaw>228</yaw>
+			<pitch>-26</pitch>
+			<yaw>355</yaw>
 			<roll>360</roll>
 		</entry>
 		<entry type="clearcolor" r="0" g="0" b="0" a="0" />
